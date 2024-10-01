@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Associated Services</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        label {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #444;
+            margin-bottom: 10px;
+            display: block;
+            text-align: left;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .radio-group {
+            margin-bottom: 25px;
+        }
+
+        .radio-group label {
+            font-size: 1em;
+            color: #666;
+            font-weight: 400;
+            display: inline-block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            background-color: #f9f9f9;
+        }
+
+        .button {
+            padding: 12px 20px;
+            margin: 15px 0;
+            border: none;
+            color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            border-radius: 5px;
+            display: block;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .radio-inline {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Associated Services</h1>
+
+        <!-- Short Description -->
+        <p>
+            Please select the services you need for your website. These services include domain registration, hosting, and SEO to help boost your website's visibility online.
+        </p>
+
+        <!-- Form -->
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <!-- Domain -->
+            <label for="need_domain">Do you need a domain?</label>
+            <div class="radio-group">
+                <div class="radio-inline">
+                    <input type="radio" id="yes_domain" name="need_domain" value="Yes">
+                    <label for="yes_domain">Yes</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" id="no_domain" name="need_domain" value="No">
+                    <label for="no_domain">No</label>
+                </div>
+            </div>
+
+            <!-- Hosting -->
+            <label for="need_hosting">Do you need a hosting plan?</label>
+            <div class="radio-group">
+                <div class="radio-inline">
+                    <input type="radio" id="yes_hosting" name="need_hosting" value="Yes">
+                    <label for="yes_hosting">Yes</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" id="no_hosting" name="need_hosting" value="No">
+                    <label for="no_hosting">No</label>
+                </div>
+            </div>
+
+            <!-- SEO -->
+            <label for="need_seo">Do you prefer to do SEO?</label>
+            <div class="radio-group">
+                <div class="radio-inline">
+                    <input type="radio" id="yes_seo" name="need_seo" value="Yes">
+                    <label for="yes_seo">Yes</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" id="no_seo" name="need_seo" value="No">
+                    <label for="no_seo">No</label>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <input type="submit" value="Next" class="button">
+        </form>
+    </div>
+</body>
+</html>

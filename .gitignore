@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.env
+.env
+
+# Django
+*.log
+*.pot
+*.pyc
+*.sqlite3
+/db.sqlite3
+/media
+/staticfiles
+/venv/
+
+# Environment variables
+*.env
+
+# Gemini API keys (if stored in environment files)
+gemini_api_key

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            line-height: 1.6; /* Global line-height */
+        }
+        h1 { 
+            color: #333; 
+        }
+        .proposal-box { 
+            border: 1px solid #ddd; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+            min-height: 400px;
+            background-color: #f9f9f9;
+            white-space: pre-wrap; /* Ensures new lines are respected */
+            line-height: 1.8; /* Improve line spacing within the proposal */
+        }
+        .proposal-box[contenteditable="true"] {
+            outline: none;  /* Remove focus outline when editing */
+        }
+        .button { 
+            padding: 10px 15px; 
+            margin: 10px 0; 
+            border: none; 
+            color: #fff; 
+            background-color: #007bff; 
+            cursor: pointer;
+        }
+        .button:hover { 
+            background-color: #0056b3; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+        .styled-title {
+            font-weight: bold;
+            color: #007bff; /* Main Title Color */
+            font-size: 1.4em; /* Larger title size */
+            margin-bottom: 10px;
+            line-height: 2; /* Increased line height for title */
+        }
+        .styled-subtitle {
+            font-weight: bold;
+            color: #ff6600; /* Complementary color for subtitles */
+            font-size: 1 em; /* Slightly smaller than main title */
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 1em;
+            line-height: 1.8; /* Increased line height for better readability */
+        }
+        .instructions {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Proposal</h1>
+        <p class="instructions">
+            Below is the generated proposal based on your inputs. You can make edits if necessary. Once you're satisfied with the changes, you can download the proposal as a Word file. 
+        </p>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <!-- Editable Proposal Content -->
+            <div class="proposal-box" contenteditable="true" id="editable_proposal"></div>
+            <!-- Hidden field to store proposal text before submission -->
+            <input type="hidden" name="proposal_text" id="proposal_text">
+            <button type="submit" class="button" onclick="saveChanges()">Save Changes</button>
+        </form>
+
+        <!-- Form for downloading the proposal as Word -->
+        <form method="POST" action="{% url 'download_proposal' %}">
+            {% csrf_token %}
+            <input type="hidden" name="proposal_text" value="{{ proposal_text }}">
+            <button type="submit" class="button">Download Proposal as Word</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to replace asterisks and add formatting to the proposal
+        function formatProposalText(text) {
+            // Remove asterisks
+            text = text.replace(/\*/g, '');
+
+            // Add custom formatting for main titles (assume titles end with ":")
+            text = text.replace(/^(.*?):/gm, '<span class="styled-title">$1:</span>'); 
+            
+            // Add custom formatting for subtitles (subtitles assumed to start with "Phase" or certain key words)
+            text = text.replace(/(Phase \d+|Home Page|About Page|CMS|Contact Page)/g, '<span class="styled-subtitle">$1</span>');
+
+            // Replace line breaks for better readability
+            text = text.replace(/\n/g, '<br>');
+
+            return text;
+        }
+
+        // Function to load and format the proposal text into the contenteditable box
+        function loadFormattedProposal() {
+            var proposalText = `{{ proposal_text|escapejs }}`;  // Ensure safe loading
+            var formattedText = formatProposalText(proposalText);
+            document.getElementById('editable_proposal').innerHTML = formattedText;
+        }
+
+        function saveChanges() {
+            // Get the inner HTML of the contenteditable div and store it in the hidden input
+            var proposalContent = document.getElementById('editable_proposal').innerHTML;
+            document.getElementById('proposal_text').value = proposalContent;
+        }
+
+        // Load the formatted proposal on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFormattedProposal();
+        });
+    </script>
+</body>
+</html>

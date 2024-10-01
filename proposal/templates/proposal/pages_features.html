@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pages and Features</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        label {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #444;
+            margin-bottom: 10px;
+            display: block;
+            text-align: left;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            background-color: #f9f9f9;
+            resize: vertical;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            background-color: #f9f9f9;
+        }
+
+        .button {
+            padding: 12px 20px;
+            margin: 15px 0;
+            border: none;
+            color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            border-radius: 5px;
+            display: block;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pages and Features</h1>
+
+        <!-- Short Description -->
+        <p>
+            Tell us about the key goals and features of your website. This will help us better understand the functionality you expect, the actions you want users to take, and the overall user experience.
+        </p>
+
+        <!-- Form -->
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <!-- Website Goal -->
+            <label for="website_goal">What is the primary goal of having this website?</label>
+            <textarea id="website_goal" name="website_goal" rows="3" placeholder="e.g., To sell products online, To promote services, etc."></textarea>
+
+            <!-- Visitor Action -->
+            <label for="visitor_action">What action do you expect a visitor to take?</label>
+            <textarea id="visitor_action" name="visitor_action" rows="3" placeholder="e.g., Complete a purchase, Submit a contact form, etc."></textarea>
+
+            <!-- Target Audience -->
+            <label for="target_audience">Who are the target audience?</label>
+            <textarea id="target_audience" name="target_audience" rows="3" placeholder="e.g., Small business owners, Online shoppers, etc."></textarea>
+
+            <!-- Benchmark Website -->
+            <label for="benchmark_website">Do you have a benchmark website in mind?</label>
+            <input type="text" id="benchmark_website" name="benchmark_website" placeholder="e.g., www.example.com">
+
+            <!-- Submit Button -->
+            <input type="submit" value="Next" class="button">
+        </form>
+    </div>
+</body>
+</html>

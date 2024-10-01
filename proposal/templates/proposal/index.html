@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Maker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+        p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Company Logo -->
+        <img src="https://via.placeholder.com/150" alt="Company Logo">
+
+        <!-- Welcome Title -->
+        <h1>Welcome to Proposal Maker</h1>
+
+        <!-- Short Description -->
+        <p>
+            This application will help you generate professional project proposals. Just tell us about your project, and we will handle the rest.
+        </p>
+
+        <!-- Form -->
+        <form method="POST" action="">
+            {% csrf_token %}
+            
+            <label for="project_summary">Project Summary:</label>
+            <textarea id="project_summary" name="project_summary" rows="4" cols="50" placeholder="Develop Website for a home made cake baker named Merliah Home Made Cakes to sell their cakes online."></textarea><br>
+            
+            <label for="client_name">Client Name:</label>
+            <input type="text" id="client_name" name="client_name" placeholder="Enter client name here"><br>
+            
+            <input type="submit" value="Next">
+        </form>
+    </div>
+</body>
+</html>
