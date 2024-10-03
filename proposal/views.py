@@ -204,7 +204,7 @@ def download_proposal(request):
 
     # Add Date section: "Date: [Today's Date]"
     date_paragraph = doc.add_paragraph()
-    date_run = date_paragraph.add_run(f"Date: {request.session.get('date', 'Today\'s Date')}")
+    date_run = date_paragraph.add_run(f"Date: {request.session.get('date', "Today\'s Date")}")
     date_run.font.size = Pt(12)
 
     # Add Client section: "Client: [Client Name]"
